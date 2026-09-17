@@ -2,11 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- buena escala para los teléfonos -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About | Marco Antonio Peña Ibarra</title>
+
+    <meta name="description"
+          content="About Marco Antonio Peña Ibarra, M.S. student in Mathematics and Graduate Teaching Assistant at UTRGV.">
 
     <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #f5f5dc;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -16,33 +27,55 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            min-height: 100dvh;
+            color: #111;
         }
 
         .container {
             display: flex;
             align-items: center;
-            gap: 40px;
-            max-width: 900px;
+            gap: 50px;
+            max-width: 950px;
             width: 85%;
             margin: auto;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         img {
-            width: 240px;
+            width: 275px;
+            max-width: 100%;
             height: auto;
             border-radius: 6px;
             flex-shrink: 0;
         }
 
         .bio {
-            font-size: 20px;
-            line-height: 1.6;
-            color: #111;
+            max-width: 520px;
+            font-size: 18px;
+            line-height: 1.65;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: #0055aa;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .bio h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            margin: 0 0 22px 0;
+            font-weight: 600;
         }
 
         .bio p {
-            margin: 0 0 15px 0;
+            margin: 0 0 18px 0;
         }
 
         .bio p:last-child {
@@ -58,49 +91,90 @@
             text-decoration: underline;
         }
 
-        /* hace el ajuste automático para celulares */
+        .desktop-break {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             body {
-                align-items: flex-start; /*scroll natural */
+                align-items: flex-start;
             }
+
             .container {
                 flex-direction: column;
                 text-align: center;
-                gap: 25px;
+                gap: 28px;
+                width: 90%;
                 padding: 40px 20px;
             }
+
             img {
-                width: 200px; /* más pequeño en teléfono para balancear */
+                width: 220px;
+            }
+
+            .bio {
+                max-width: 560px;
+                font-size: 17px;
+            }
+
+            .bio h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .desktop-break {
+                display: none;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <!-- Image source -->
-        <img src="images/marco.jpg"
-        alt="Marco Antonio Peña Ibarra"
-        decoding="async"
-        fetchpriority="high">
+    <main class="container">
 
-        <!-- Paragraphs -->
+        <img
+            src="images/marco.jpg"
+            alt="Marco Antonio Peña Ibarra"
+            decoding="async"
+            fetchpriority="high">
+
         <div class="bio">
+
+            <a class="back-link" href="index.html">← Back</a>
+
+            <h1>About</h1>
+
             <p>
-                I hold a B.S. in Pure Mathematics with a minor in Computer Science from the University of Texas Rio Grande Valley.
-                Currently, I am pursuing my master's degree in Applied Mathematics at UTRGV while working as a Graduate Teaching Assistant.
+                I am currently pursuing an M.S. in Mathematics at <br class="desktop-break">
+                The University of Texas Rio Grande Valley, where I also serve as a <br class="desktop-break">
+                Graduate Teaching Assistant.
             </p>
+
+            <p>
+                I hold a B.S. in Mathematics with a minor in Computer Science, also from UTRGV.
+            </p>
+
             <p>
                 I enjoy running, chess, and Rubik's cubes.
             </p>
+
             <p>
-                Here are my chess accounts: chess.com and lichess
-            <br>
-                <a href="https://www.chess.com/member/mapipo100" target="_blank">@mapipo100</a> — 
-                <a href="https://lichess.org/@/mapi100" target="_blank">@mapi100</a>
+                My chess accounts:
+                <a
+                    href="https://www.chess.com/member/mapipo100"
+                    target="_blank"
+                    rel="noopener noreferrer">@mapipo100</a>
+                ·
+                <a
+                    href="https://lichess.org/@/mapi100"
+                    target="_blank"
+                    rel="noopener noreferrer">@mapi100</a>
             </p>
+
         </div>
-    </div>
+
+    </main>
 
 </body>
 </html>
