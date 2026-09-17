@@ -1,2 +1,5 @@
-# website-portfolio
-my personal website portfolio.
+# marcopenaibarra.com
+
+Personal academic website of Marco Antonio Peña Ibarra.
+
+https://marcopenaibarra.com
