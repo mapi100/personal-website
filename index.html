@@ -84,16 +84,27 @@
             margin: 0;
         }
 
-        /* ajustes visuales para que no se vea gigante en celulares */
+        /* ajustes visuales para celulares */
         @media (max-width: 480px) {
             .title {
                 font-size: 26px;
             }
+
             .career {
                 font-size: 16px;
             }
+
+            .links {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto 30px;
+            }
+
             .links a {
-                padding: 8px 20px;
+                padding: 8px 12px;
                 font-size: 15px;
             }
         }
