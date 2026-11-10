@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminary Portal | Marco Antonio Peña Ibarra</title>
+    <meta name="description" content="Case study: a JavaScript academic portal with Supabase authentication, PostgreSQL authorization, and regression tests. Implementation, decisions, and limits.">
+    <link rel="canonical" href="https://marcopenaibarra.com/seminary-portal.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Marco Antonio Peña Ibarra">
+    <meta property="og:title" content="Seminary Portal | Marco Antonio Peña Ibarra">
+    <meta property="og:description" content="Case study: a JavaScript academic portal with Supabase authentication, PostgreSQL authorization, and regression tests. Implementation, decisions, and limits.">
+    <meta property="og:url" content="https://marcopenaibarra.com/seminary-portal.html">
+    <meta property="og:image" content="https://marcopenaibarra.com/images/marco.jpg">
+    <meta property="og:image:width" content="635">
+    <meta property="og:image:height" content="800">
+    <meta property="og:image:alt" content="Marco Antonio Peña Ibarra">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Seminary Portal | Marco Antonio Peña Ibarra">
+    <meta name="twitter:description" content="Case study: a JavaScript academic portal with Supabase authentication, PostgreSQL authorization, and regression tests. Implementation, decisions, and limits.">
+    <meta name="twitter:image" content="https://marcopenaibarra.com/images/marco.jpg">
+    <meta name="twitter:image:alt" content="Marco Antonio Peña Ibarra">
+    <link rel="icon" type="image/jpeg" sizes="360x360" href="images/gamma.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="reading-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <main id="main" class="reading-container" tabindex="-1">
+        <a class="back-link" href="projects.html#seminary">← Projects</a>
+        <h1>Seminary Academic Management Portal</h1>
+        <p>An academic portal for students, faculty, and academic administration at the Seminario Diocesano de Matamoros-Reynosa.</p>
+        <p><a href="https://seminariomr.org">Website</a> · <a href="https://seminariomr.org/portal/">Portal entry</a> · <a href="https://github.com/mapi100/seminario-matamoros-reynosa">Code</a></p>
+
+        <section aria-labelledby="context-title">
+            <h2 id="context-title">Problem &amp; contribution</h2>
+            <p>The portal is designed to connect enrollment, teaching assignments, coursework, and grades while giving each role access to the information it needs.</p>
+            <p>I developed the web interface, authentication and role-based access controls, and Python/Docker SQL regression tests. My CV describes these contributions, and the public repository provides the implementation evidence.</p>
+            <p>This case study describes the reviewed source; it does not establish exclusive authorship of every file or institutional adoption.</p>
+        </section>
+        <section aria-labelledby="features-title">
+            <h2 id="features-title">Implemented workflows</h2>
+            <ul>
+                <li><strong>Students:</strong> enrolled courses, published grades, published course content, and coursework submissions.</li>
+                <li><strong>Faculty:</strong> assigned courses and rosters, course content and assignments, grade drafts and publication.</li>
+                <li><strong>Academic administration:</strong> people, academic periods, courses, teaching assignments, enrollment, and reporting workflows.</li>
+            </ul>
+        </section>
+        <section aria-labelledby="architecture-title">
+            <h2 id="architecture-title">Architecture</h2>
+            <p>The frontend uses HTML, CSS, and vanilla JavaScript, without a frontend build step. Supabase provides authentication and the data API; PostgreSQL holds academic records and enforces access rules.</p>
+            <p class="architecture">Browser → Supabase Auth / data API → PostgreSQL (RLS + SQL functions)</p>
+            <p>Responses return to the browser through the data API. Private coursework files use Supabase Storage policies. Invitations use a separate TypeScript Edge Function with server-side credentials; the browser frontend is JavaScript.</p>
+            <h3>Authentication and authorization</h3>
+            <p><strong>Authentication</strong> verifies who is signed in through Supabase Auth. The frontend checks the session and active profile.</p>
+            <p><strong>Authorization</strong> determines which records and operations that person can access. PostgreSQL Row Level Security (RLS) and SQL functions check identity, role, profile activity, and course or enrollment relationships. Hiding a button is not the security boundary.</p>
+        </section>
+        <section aria-labelledby="decisions-title">
+            <h2 id="decisions-title">Two technical decisions</h2>
+            <h3>Keep access rules close to the data</h3>
+            <p>Student grade reads are filtered to their own published records. Controlled SQL functions validate teaching assignments before grade changes. Changing a URL or browser request does not itself grant access.</p>
+            <p><a href="https://github.com/mapi100/seminario-matamoros-reynosa/tree/main/supabase/migrations">SQL migrations</a></p>
+            <h3>Separate drafts from publication</h3>
+            <p>Grade drafts are stored separately from the grades students see. Revisions detect stale edits, and audit events record changes. After an uncertain write outcome, the interface requires a fresh read before another attempt.</p>
+            <p><a href="https://github.com/mapi100/seminario-matamoros-reynosa/blob/main/docs/capturar-calificaciones.md">Grade-capture documentation</a></p>
+        </section>
+        <section aria-labelledby="tests-title">
+            <h2 id="tests-title">Existing tests</h2>
+            <p><strong>Frontend:</strong> Python/Playwright checks cover page states, pagination, grade editing, retries, and late responses after navigation or sign-out. They use a simulated API, so they do not verify a hosted Supabase deployment.</p>
+            <p><strong>Database:</strong> Python runners create disposable PostgreSQL containers with Docker and apply SQL migrations. Grade tests check isolation between students, hidden drafts, inactive profiles, denied direct writes, and score constraints. Local Auth fixtures do not exercise hosted authentication.</p>
+            <p><a href="https://github.com/mapi100/seminario-matamoros-reynosa/tree/main/tests">Frontend tests</a> · <a href="https://github.com/mapi100/seminario-matamoros-reynosa/blob/main/supabase/tests/run_grades_local.py">Grade regression runner</a></p>
+            <p>These tests were inspected in the source, not executed as part of this portfolio update. Their presence is not a security certification.</p>
+        </section>
+        <section aria-labelledby="status-title">
+            <h2 id="status-title">Status &amp; limitations</h2>
+            <p>The repository contains the workflows, migrations, tests, and setup documentation described above. Publishing static files does not apply SQL migrations or configure authentication, storage, or invitation email.</p>
+            <p>The project provides a public website and portal address. The deployed feature set and authenticated production behavior have not been verified for this case study. No active-user counts, institutional adoption, uptime, or time-saved measurements are claimed.</p>
+            <p>No private student records or real grades are shown here.</p>
+        </section>
+        
+        <!--
+        <p class="source-note">Source reviewed November 10, 2026, at commit <a href="https://github.com/mapi100/seminario-matamoros-reynosa/tree/b066fa6fa7fe2eb05c06b3c6c1232b7b9cfcc388">b066fa6</a>. Descriptions refer to that source, not a deployment audit.</p>
+        
+        <p class="page-footer"><a href="projects.html">Projects</a> · <a href="index.html">Home</a> · <a href="documents/cv_Marco.pdf">CV (PDF)</a> · <a href="mailto:marcoantonio270204@gmail.com">Contact</a></p>
+        -->
+    </main>
+</body>
+</html>

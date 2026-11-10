@@ -1,50 +1,79 @@
+/* Original palette and system typeface, shared by the four static pages. */
+*, *::before, *::after { box-sizing: border-box; }
 body {
-	background-color: #f5f5dc;
-	font-family: Arial, sans-serif;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 90vh;
-	margin: 0;
-	padding: 0;
+    background-color: #f5f5dc;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #111;
 }
-
-.title {
-	text-align: center;
-	font-weight: bold;
-	font-size: 32px;
+a { color: #0055aa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, summary:focus-visible { outline: 2px solid #0055aa; outline-offset: 4px; }
+main:focus { outline: none; }
+img { max-width: 100%; height: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.skip-link { position: absolute; top: 8px; left: 12px; padding: 8px 12px; background: #fff; transform: translateY(-160%); z-index: 1; }
+.skip-link:focus { transform: translateY(0); }
+/* Homepage: same centered layout, photo, and white outlined buttons as before. */
+.home { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+.home-container { width: 90%; max-width: 600px; padding: 30px 0; }
+.title { font-size: 32px; margin: 0 0 10px; color: #000; }
+.career { font-size: 20px; font-weight: 500; margin: 0 0 25px; color: #111; }
+.intro { font-size: 14px; line-height: 1.6; color: #333; margin: -10px 0 25px; }
+.home-photo { display: block; max-width: 460px; width: 100%; border-radius: 4px; margin: 0 auto 25px; }
+.links { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+.links a { display: inline-block; background-color: #fff; color: #000; text-decoration: none; padding: 10px 24px; border: 1px solid #000; border-radius: 4px; font-size: 16px; font-weight: 500; }
+.links a:hover { background-color: #eaeaea; }
+.contact { font-size: 16px; line-height: 1.5; color: #333; margin: 0; }
+.contact a { color: #0000ee; text-decoration: underline; overflow-wrap: anywhere; }
+/* About: original portrait at the left and biography at the right. */
+.about { display: flex; justify-content: center; align-items: center; min-height: 100vh; min-height: 100dvh; }
+.about-container { display: flex; align-items: center; gap: 50px; max-width: 950px; width: 85%; margin: auto; padding: 30px 20px; }
+.about-photo { display: block; width: 275px; border-radius: 6px; flex-shrink: 0; }
+.bio { max-width: 520px; font-size: 18px; line-height: 1.65; }
+.back-link { display: inline-block; margin-bottom: 18px; font-size: 16px; }
+.bio h1 { font-size: 30px; line-height: 1.2; margin: 0 0 22px; font-weight: 600; }
+.bio p { margin: 0 0 18px; }
+.bio p:last-child { margin-bottom: 0; }
+.bio details { margin-bottom: 18px; }
+.bio summary { color: #0055aa; cursor: pointer; }
+.bio details[open] summary { margin-bottom: 14px; }
+.bio details p { font-size: 16px; }
+.small-links { font-size: 16px; }
+/* Projects and case study: plain text and links in a single reading column. */
+.reading-container { width: 90%; max-width: 700px; margin: 0 auto; padding: 40px 0; font-size: 16px; line-height: 1.65; }
+.reading-container h1 { font-size: 28px; line-height: 1.3; font-weight: 600; margin: 0 0 22px; }
+.reading-container h2 { font-size: 20px; line-height: 1.4; font-weight: 600; margin: 0 0 12px; }
+.reading-container h3 { font-size: 17px; line-height: 1.5; font-weight: 600; margin: 22px 0 10px; }
+.reading-container p { margin: 0 0 14px; }
+.reading-container article, .reading-container section { margin-top: 34px; }
+.reading-container ul { padding-left: 22px; margin: 0 0 14px; }
+.reading-container li + li { margin-top: 10px; }
+.source-note a { text-decoration: underline; }
+.technologies, .source-note { font-size: 14px; color: #333; }
+.architecture { font-size: 14px; color: #333; }
+.reading-container .source-note { margin-top: 32px; }
+.reading-container .page-footer { margin-top: 34px; font-size: 14px; }
+@media (max-width: 768px) {
+    .about { align-items: flex-start; }
+    .about-container { flex-direction: column; text-align: center; gap: 28px; width: 90%; padding: 40px 20px; }
+    .about-photo { width: 220px; }
+    .bio { width: 100%; max-width: 560px; font-size: 17px; }
+    .bio h1 { font-size: 28px; margin-bottom: 20px; }
+    .bio p, .bio details { text-align: left; }
 }
-.career {
-	text-align: center;
-	font-weight: bold;
-	font-size: 24px;
+@media (max-width: 480px) {
+    .title { font-size: 26px; }
+    .career { font-size: 16px; }
+    .intro { font-size: 13px; }
+    .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100%; max-width: 320px; margin: 0 auto 30px; }
+    .links .projects-link { grid-column: 1 / -1; }
+    .links a { padding: 8px 12px; font-size: 15px; }
+    .contact { font-size: 15px; }
+    .reading-container { padding-top: 30px; }
+    .reading-container h1 { font-size: 26px; }
 }
-
-.links {
-	text-align: center;
-	margin-top: 40px;
-}
-
-.links a {
-	display: inline-block;
-	margin: 10px;
-	padding: 10px 20px;
-	font-weight: bold;
-	text-decoration: none;
-	border: 2px solid #000;
-	border-radius: 4px;
-	background-color: #f5f5f5;
-	color: #000;
-	transition: background-color 0.3s ease;
-}
-
-.links a:hover {
-	background-color: #000;
-	color: #fff;
-}
-.contact {
-	text-align: center;
-	font-size: 20px;
-	margin-bottom: 20px;
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
 }

@@ -1,144 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>Marco Antonio Peña Ibarra | Mathematics</title>
-    <meta name="description"
-          content="Personal academic website of Marco Antonio Peña Ibarra, M.S. student in Mathematics at UTRGV.">
-    <link rel="icon" type="image/jpeg" sizes="360x360" href="/images/gamma.jpg">
-    
-    <style>
-        body {
-            background-color: #f5f5dc;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 600px;
-            padding: 30px 0;
-        }
-
-        .title {
-            font-size: 32px;
-            margin: 0 0 10px 0;
-            color: #000;
-        }
-
-        .career {
-            font-size: 20px;
-            font-weight: 500;
-            margin: 0 0 25px 0;
-            color: #111;
-        }
-
-        img {
-            max-width: 460px;
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 25px;
-        }
-
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap; /* para que se acomode abajo solo si la pantalla es pequeña */
-        }
-
-        /* estilo de los botones */
-        .links a {
-            display: inline-block;
-            background-color: #fff;
-            color: #000;
-            text-decoration: none;
-            padding: 10px 24px;
-            border: 1px solid #000;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-
-        .links a:hover {
-            background-color: #eaeaea;
-        }
-
-        .contact {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #333;
-            margin: 0;
-        }
-
-        /* ajustes visuales para celulares */
-        @media (max-width: 480px) {
-            .title {
-                font-size: 26px;
-            }
-
-            .career {
-                font-size: 16px;
-            }
-
-            .links {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 12px;
-                width: 100%;
-                max-width: 320px;
-                margin: 0 auto 30px;
-            }
-
-            .links a {
-                padding: 8px 12px;
-                font-size: 15px;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Antonio Peña Ibarra | Mathematics &amp; Software</title>
+    <meta name="description" content="M.S. student in Mathematics at UTRGV. Database-backed web projects and an academic data project.">
+    <link rel="canonical" href="https://marcopenaibarra.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Marco Antonio Peña Ibarra">
+    <meta property="og:title" content="Marco Antonio Peña Ibarra | Mathematics &amp; Software">
+    <meta property="og:description" content="M.S. student in Mathematics at UTRGV. Database-backed web projects and an academic data project.">
+    <meta property="og:url" content="https://marcopenaibarra.com/">
+    <meta property="og:image" content="https://marcopenaibarra.com/images/marco.jpg">
+    <meta property="og:image:width" content="635">
+    <meta property="og:image:height" content="800">
+    <meta property="og:image:alt" content="Marco Antonio Peña Ibarra">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Marco Antonio Peña Ibarra | Mathematics &amp; Software">
+    <meta name="twitter:description" content="M.S. student in Mathematics at UTRGV. Database-backed web projects and an academic data project.">
+    <meta name="twitter:image" content="https://marcopenaibarra.com/images/marco.jpg">
+    <meta name="twitter:image:alt" content="Marco Antonio Peña Ibarra">
+    <link rel="icon" type="image/jpeg" sizes="360x360" href="images/gamma.jpg">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-    <div class="container">
+<body class="home">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <main id="main" class="home-container" tabindex="-1">
         <h1 class="title">Marco Antonio Peña Ibarra</h1>
-        <div class="career">M.S. Student in Mathematics @ UTRGV</div>
-        <!--<div class="sub-career">B.S. in Mathematics, Minor in CS</div> -->
-        
-        <img src="images/cubos.jpeg"
-        alt="Rubik's cubes and math books"
-        decoding="async"
-        fetchpriority="high">
-        
-    <div class="links">
-        <a href="https://github.com/mapi100" target="_blank">GitHub</a>
-        <a href="https://orcid.org/0009-0006-0385-0088"
-        target="_blank"
-        rel="me noopener noreferrer">ORCID</a>
-        
-        <a href="about.html" target="_blank">About</a>
-        <a href="documents/cv_Marco.pdf" target="_blank">CV</a>
+        <p class="career">M.S. Student in Mathematics @ UTRGV</p>
 
-    </div>
-        
-        <p class="contact">
-            Contact info:<br>
+        <img class="home-photo" src="images/math-and-cubes.webp"
+             width="960" height="720" alt="Rubik's cubes and math books"
+             decoding="async" fetchpriority="high">
+
+        <nav class="links" aria-label="Main navigation">
+            <a class="projects-link" href="projects.html">Projects</a>
+            <a href="https://github.com/mapi100" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a>
+            <a href="https://orcid.org/0009-0006-0385-0088" target="_blank" rel="me noopener noreferrer">ORCID<span class="sr-only"> (opens in a new tab)</span></a>
+            <a href="about.html" target="_blank" rel="noopener noreferrer">About<span class="sr-only"> (opens in a new tab)</span></a>
+            <a href="documents/cv_Marco.pdf" target="_blank" rel="noopener noreferrer">CV<span class="sr-only"> (PDF, opens in a new tab)</span></a>
+        </nav>
+        <p class="contact" id="contact">Contact info:<br>
             <a href="mailto:marcoantonio270204@gmail.com">marcoantonio270204@gmail.com</a>
         </p>
-    </div>
-
+    </main>
 </body>
 </html>
